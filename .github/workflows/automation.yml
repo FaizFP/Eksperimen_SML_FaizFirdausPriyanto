@@ -1,0 +1,53 @@
+name: Automate Preprocessing Pipeline
+
+# Trigger: Jalan ketika ada push ke branch main, TAPI hanya jika folder raw atau script berubah
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'namadataset_raw/**'        # Jika data mentah berubah
+      - 'preprocessing/automate_*.py' # Jika script automate berubah
+  workflow_dispatch:                # Tombol manual run
+
+permissions:
+  contents: write                   # Izin untuk save file balik ke repo
+
+jobs:
+  run-preprocessing:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Ambil kodingan dari repo
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # 2. Siapkan Python
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # 3. Install Library dari requirements.txt
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # 4. Jalankan Script Automate
+      # Perhatikan path-nya: kita panggil dari root folder
+      - name: Run Preprocessing Script
+        run: python preprocessing/automate_FaizFirdausPriyanto.py  # Ganti 'Faiz' dengan nama Anda
+
+      # 5. Commit dan Push hasilnya (Dataset Bersih)
+      - name: Commit and Push Processed Data
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          
+          # Tambahkan file hasil preprocessing ke staging area
+          git add preprocessing/namadataset_preprocessing/wine_quality_clean.csv
+          
+          # Commit jika ada perubahan
+          git commit -m "Auto-update: Dataset preprocessing result [skip ci]" || echo "No changes to commit"
+          
+          # Push balik ke repo
+          git push
