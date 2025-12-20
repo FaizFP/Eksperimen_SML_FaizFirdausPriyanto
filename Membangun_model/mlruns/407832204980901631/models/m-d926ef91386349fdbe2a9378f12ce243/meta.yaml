@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/faiz/Documents/tgstgs/SEMESTER%205/Dicoding/Eksperimen_SML_FaizFirdausPriyanto/Membangun_model/mlruns/407832204980901631/models/m-d926ef91386349fdbe2a9378f12ce243/artifacts
+creation_timestamp: 1766219590464
+experiment_id: '407832204980901631'
+last_updated_timestamp: 1766219595475
+model_id: m-d926ef91386349fdbe2a9378f12ce243
+model_type: null
+name: model
+source_run_id: b0c283f7013b42c19cc7d99fe706f58c
+status: 2
+status_message: null

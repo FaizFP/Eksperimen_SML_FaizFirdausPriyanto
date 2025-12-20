@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/faiz/Documents/tgstgs/SEMESTER%205/Dicoding/Eksperimen_SML_FaizFirdausPriyanto/Membangun_model/mlruns/407832204980901631/b0c283f7013b42c19cc7d99fe706f58c/artifacts
+end_time: 1766219595491
+entry_point_name: ''
+experiment_id: '407832204980901631'
+lifecycle_stage: active
+run_id: b0c283f7013b42c19cc7d99fe706f58c
+run_name: Best_Model_Tuning
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1766219590310
+status: 3
+tags: []
+user_id: faiz
